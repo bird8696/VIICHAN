@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./App.css";
 import AppIndex from "./AppIndex";
 
 export const SetContext = React.createContext({});
-
 export const StoreContext = React.createContext({});
 
 function App() {
@@ -16,6 +16,33 @@ function App() {
     id: "",
     pw: "",
   });
+
+  const { pathname } = useLocation();
+
+  const 주소유효성검증 = () => {
+    const 로그인했을때비접근주소 = ["join", "login", "Onc1"];
+    const 주소 = pathname.slice(1);
+
+    if (로그인했을때비접근주소.includes(주소) && loginUser.id !== "") {
+      navigation("/main");
+    }
+  };
+
+  const 자동로그인 = () => {
+    const user = JSON.parse(localStorage.getItem("loginUser"));
+
+    if (user) {
+      setLoginUser(user);
+    }
+  };
+
+  React.useEffect(() => {
+    자동로그인();
+  }, []);
+
+  React.useEffect(() => {
+    주소유효성검증();
+  }, [loginUser]);
 
   const navigation = useNavigate();
   const [dispatchType, setDispatechType] = React.useState({
@@ -70,12 +97,15 @@ function App() {
   }, [dispatchType]);
 
   return (
-    <StoreContext.Provider value={{
-        loginUser : loginUser
-    }}>
-    <SetContext.Provider value={{ setDispatechType: setDispatechType }}>
-      <AppIndex />
-    </SetContext.Provider>
+    <StoreContext.Provider
+      value={{
+        loginUser: loginUser,
+        setLoginUser: setLoginUser,
+      }}
+    >
+      <SetContext.Provider value={{ setDispatechType: setDispatechType }}>
+        <AppIndex />
+      </SetContext.Provider>
     </StoreContext.Provider>
   );
 }

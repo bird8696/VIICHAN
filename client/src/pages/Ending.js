@@ -11,7 +11,7 @@ function Ending() {
   const sendViichan = async () => {
     await axios({
       method: "post",
-      url: "http://localhost:3000/",
+      url: "http://localhost:5000/",
       params: state,
     })
       .then((response) => {
@@ -33,7 +33,7 @@ function Ending() {
         className="btn"
         type="button"
         onClick={() => {
-          navigation('http://localhost:3000/');
+          navigation('http://localhost:5000/');
         }}
       >
         다시하기

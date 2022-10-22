@@ -1,21 +1,37 @@
 import React from "react";
 import { StoreContext } from "../App";
-import axios from 'axios';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { loginUser } = React.useContext(StoreContext);
+  const { setLoginUser } = React.useContext(StoreContext);
+  const navigation = useNavigate();
+
   const [user, setUser] = React.useState({
     id: "",
     pw: "",
   });
 
-  const 로그인 = async () => {
+  const 로그인서버처리 = async (paramsUser) => {
     await axios({
-        url : "http://localhost:3000/login",
-        params : {
-            user : user,
-        },
-    }).then((res));
+      url: "http://localhost:5000/login",
+      params: {
+        user: user,
+      },
+    }).then(({ data }) => {
+      setLoginUser(data.user);
+      /*
+        웹 저장소
+        1. localStorage (만료 없음 영구적임)
+        2. Cookie (만료날짜가 있음)
+        */
+      localStorage.setItem("loginUser", JSON.stringify(data.user));
+      navigation("/Main");
+    });
+  };
+
+  const 로그인 = async () => {
+    로그인서버처리(user);
   };
 
   return (
