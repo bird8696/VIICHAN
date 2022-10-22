@@ -1,5 +1,6 @@
 import React from "react";
 import { StoreContext } from "../App";
+import axios from 'axios';
 
 function Login() {
   const { loginUser } = React.useContext(StoreContext);
@@ -8,8 +9,13 @@ function Login() {
     pw: "",
   });
 
-  const 로그인 = () => {
-    console.log(user);
+  const 로그인 = async () => {
+    await axios({
+        url : "http://localhost:3000/login",
+        params : {
+            user : user,
+        },
+    }).then((res));
   };
 
   return (
