@@ -10,8 +10,8 @@ function Main() {
   return (
     // 이미지 출처: https://tenor.com/view/아이네-ine-アイネ-이세돌-이세계아이돌-gif-25436629
     <div className="main-app">
-      안녕하세요 {loginUser.id}님!{" "}
-      <button
+      <h3>안녕하세요 {loginUser.id}님!{" "}</h3>
+      <button className="idbutn"
         onClick={() => {
           localStorage.removeItem("loginUser");
           setLoginUser({
