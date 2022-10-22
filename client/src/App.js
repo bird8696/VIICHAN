@@ -5,12 +5,24 @@ import AppIndex from "./AppIndex";
 
 export const SetContext = React.createContext({});
 
+export const StoreContext = React.createContext({});
+
 function App() {
+  /*
+    1. useContext : 전역변수
+    2. Redux, Recoil   (라이브러리)
+  */
+  const [loginUser, setLoginUser] = React.useState({
+    id: "",
+    pw: "",
+  });
+
   const navigation = useNavigate();
   const [dispatchType, setDispatechType] = React.useState({
     code: "",
     params: null,
   });
+
   const [viichan, setViichan] = React.useState({
     A: 0,
     B: 0,
@@ -24,27 +36,47 @@ function App() {
     switch (dispatchType.code) {
       case "답변":
         const clickedViichan = dispatchType.params.viichan;
-        const cloneViichan = [...viichan];
+
+        const cloneViichan = { ...viichan };
 
         const obj = {
           name: "",
           age: 0,
         };
 
-        const findIndex = cloneViichan.findIndex((value) => {
-          return value.hasOwnProperty(clickedViichan);
-        });
-
-        cloneViichan[findIndex][clickedViichan]++;
-
+        cloneViichan[clickedViichan]++;
         setViichan(cloneViichan);
+
+        const pathname = window.location.pathname;
+
+        //  /Onc11 .charAt(0) 6
+        const NextPage = Number(pathname.replace(/[^0-9]/g, "")) + 1;
+
+        navigation(`Onc${NextPage}`);
+
+        if (NextPage === 14) {
+          navigation(`/Ending`, {
+            state: {
+              viichan: viichan,
+            },
+          });
+        } else {
+          navigation(`Onc${NextPage}`);
+        }
+
+      default:
+        break;
     }
-  });
+  }, [dispatchType]);
 
   return (
-    <SetContext.Provider>
+    <StoreContext.Provider value={{
+        loginUser : loginUser
+    }}>
+    <SetContext.Provider value={{ setDispatechType: setDispatechType }}>
       <AppIndex />
     </SetContext.Provider>
+    </StoreContext.Provider>
   );
 }
 

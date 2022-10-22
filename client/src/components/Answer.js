@@ -5,7 +5,7 @@ function Answer(props) {
   const { setDispatechType } = React.useContext(SetContext);
   return (
     <button
-      className="btn"
+      className="Answer"
       onClick={() => {
         setDispatechType({
           code: "답변",
@@ -17,6 +17,8 @@ function Answer(props) {
     >
       {props.text}
     </button>
+
+    
   );
 }
 
