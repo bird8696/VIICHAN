@@ -38,6 +38,7 @@ function Login() {
     <div className="App">
       <header className="App-header"></header>
       <input
+      className="inputtype"
         type="text"
         onChange={(event) => {
           const cloneUser = { ...user };
@@ -45,7 +46,9 @@ function Login() {
           setUser(cloneUser);
         }}
       />
+      <br></br>
       <input
+      className="inputtype"
         style={{ marginTop: 10 }}
         type="password"
         onChange={(event) => {
@@ -54,7 +57,8 @@ function Login() {
           setUser(cloneUser);
         }}
       />
-      <button style={{ marginTop: 10 }} onClick={로그인}>
+      <br></br>
+      <button className="btn" style={{ marginTop: 10 }} onClick={로그인}>
         로그인
       </button>
     </div>
