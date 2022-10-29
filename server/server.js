@@ -129,19 +129,31 @@ app.post("/Viichan", function (req, res) {
 });
 
 app.get("/result", function (req, res) {
-  console.log(DB);
-  console.log(DB.viichan.S);
-
   let max = 0;
   let maxkey = "";
 
   for (const test in DB.viichan) {
     const value = DB.viichan[test];
 
-    max = Math.max(max, value);
+    if (max < value) {
+      max = value;
+      maxkey = test;
+    }
   }
-  console.log(max);
-  res.send("");
+
+  Ending.forEach((item, index) => {
+    if (maxkey === item.viichan) {
+      max = item.viichan;
+      maxkey = index;
+    }
+  });
+  let 추천엔딩 = Ending[maxkey];
+
+  if (DB.viichan.S === 3) {
+    추천엔딩 = Ending[5];
+  }
+
+  res.send(추천엔딩);
 });
 
 app.listen(5000, function () {

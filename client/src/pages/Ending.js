@@ -39,6 +39,7 @@ function Ending() {
   return (
     <div className="result-img-wrap">
       <img className="result-img" src={엔딩.content} alt={엔딩.name} />
+      
       <button
         className="btn"
         type="button"
