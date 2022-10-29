@@ -38,8 +38,8 @@ function Ending() {
 
   return (
     <div className="result-img-wrap">
+      <h1>당신이 선택한 운명은 바로</h1>
       <img className="result-img" src={엔딩.content} alt={엔딩.name} />
-      
       <button
         className="btn"
         type="button"
