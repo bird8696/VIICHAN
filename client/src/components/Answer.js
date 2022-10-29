@@ -7,7 +7,7 @@ function Answer(props) {
     <button
       className="Answer"
       onClick={() => {
-        setDispatechType({
+        setDispatechType({  
           code: "답변",
           params: {
             viichan: props.value,

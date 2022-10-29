@@ -30,8 +30,7 @@ const Ending = [
   },
   {
     name: "화목한 가족엔딩",
-    content:
-      "hthan-ゔぃちゃん-움짤-gif-gif-25435491tps://tenor.com/view/비챤-viic",
+    content: "img/고세구안경.gif",
     viichan: "D",
   },
   {
@@ -41,8 +40,7 @@ const Ending = [
   },
   {
     name: "이혼엔딩",
-    content:
-      "https://tenor.com/view/i-want-a-divorce-dissolution-annulment-seperation-break-up-gif-25753155",
+    content: "C:주말 htmlprojactclientpublicimg이혼.jpg",
     viichan: "A",
   },
   {
@@ -152,7 +150,7 @@ app.get("/result", function (req, res) {
   if (DB.viichan.S === 3) {
     추천엔딩 = Ending[5];
   }
-
+  console.log(추천엔딩);
   res.send(추천엔딩);
 });
 
