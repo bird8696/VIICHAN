@@ -7,11 +7,13 @@ function Main() {
 
   const navigation = useNavigate();
 
+  console.log(loginUser);
   return (
     // 이미지 출처: https://tenor.com/view/아이네-ine-アイネ-이세돌-이세계아이돌-gif-25436629
     <div className="main-app">
-      <h3>안녕하세요 {loginUser.id}님!{" "}</h3>
-      <button className="idbutn"
+      <h3>안녕하세요 {loginUser.id}님! </h3>
+      <button
+        className="idbutn"
         onClick={() => {
           localStorage.removeItem("loginUser");
           setLoginUser({
@@ -29,7 +31,7 @@ function Main() {
         className="btn"
         type="button"
         onClick={() => {
-          navigation("Onc1");
+          navigation("/Onc1");
         }}
       >
         시작하기

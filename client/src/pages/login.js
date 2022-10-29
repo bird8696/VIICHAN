@@ -19,14 +19,20 @@ function Login() {
         user: user,
       },
     }).then(({ data }) => {
-      setLoginUser(data.user);
-      /*
+      if (data.code === "success") {
+        console.log(data);
+        setLoginUser(data.user);
+        /*
         웹 저장소
         1. localStorage (만료 없음 영구적임)
         2. Cookie (만료날짜가 있음)
         */
-      localStorage.setItem("loginUser", JSON.stringify(data.user));
-      navigation("/Main");
+        localStorage.setItem("loginUser", JSON.stringify(data.user));
+        navigation("/Main");
+      } else {
+        alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
+        navigation("/login");
+      }
     });
   };
 
@@ -38,7 +44,7 @@ function Login() {
     <div className="App">
       <header className="App-header"></header>
       <input
-      className="inputtype"
+        className="inputtype"
         type="text"
         onChange={(event) => {
           const cloneUser = { ...user };
@@ -48,7 +54,7 @@ function Login() {
       />
       <br></br>
       <input
-      className="inputtype"
+        className="inputtype"
         style={{ marginTop: 10 }}
         type="password"
         onChange={(event) => {
