@@ -20,7 +20,6 @@ function Login() {
       },
     }).then(({ data }) => {
       if (data.code === "success") {
-        console.log(data);
         setLoginUser(data.user);
         /*
         웹 저장소
@@ -64,6 +63,7 @@ function Login() {
         }}
       />
       <br></br>
+      <br />
       <button className="btn" style={{ marginTop: 10 }} onClick={로그인}>
         로그인
       </button>

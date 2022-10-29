@@ -7,24 +7,34 @@ function Ending() {
   const navigation = useNavigate();
   const [엔딩, set엔딩] = React.useState({});
 
-
-  const sendViichan = async () => {
-    await axios({
-      method: "post",
-      url: "http://localhost:5000/",
-      params: state,
-    })
-      .then((response) => {
-        const data = response.data;
-        set엔딩(data);
-      })
-      .catch(() => {})
-      .finally(() => {});
+  const 결과화면 = () => {
+    axios({
+      method: "get",
+      url: "http://localhost:5000/result",
+    });
   };
 
   React.useEffect(() => {
-    set엔딩();
+    결과화면();
   }, []);
+
+  //   const sendViichan = async () => {
+  //     await axios({
+  //       method: "post",
+  //       url: "http://localhost:5000/",
+  //       params: state,
+  //     })
+  //       .then((response) => {
+  //         const data = response.data;
+  //         set엔딩(data);
+  //       })
+  //       .catch(() => {})
+  //       .finally(() => {});
+  //   };
+
+  //   React.useEffect(() => {
+  //     set엔딩();
+  //   }, []);
 
   return (
     <div className="result-img-wrap">
@@ -33,7 +43,7 @@ function Ending() {
         className="btn"
         type="button"
         onClick={() => {
-          navigation('http://localhost:5000/');
+          navigation("/login");
         }}
       >
         다시하기

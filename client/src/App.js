@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -59,7 +60,7 @@ function App() {
     S: 0,
   });
 
-  React.useEffect(() => {
+  const a = async () => {
     switch (dispatchType.code) {
       case "답변":
         const clickedViichan = dispatchType.params.viichan;
@@ -81,7 +82,7 @@ function App() {
 
         navigation(`Onc${NextPage}`);
 
-        if (NextPage === 14) {
+        if (NextPage === 20) {
           navigation(`/Ending`, {
             state: {
               viichan: viichan,
@@ -90,10 +91,23 @@ function App() {
         } else {
           navigation(`Onc${NextPage}`);
         }
+        await axios({
+          method: "post",
+          url: "http://localhost:5000/Viichan",
+          params: {
+            Viichan: cloneViichan,
+          },
+        });
+
+        break;
 
       default:
         break;
     }
+  };
+
+  React.useEffect(() => {
+    a();
   }, [dispatchType]);
 
   return (

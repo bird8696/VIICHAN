@@ -111,18 +111,12 @@ app.post("./join", (req, res) => {
 
 app.post("/Viichan", function (req, res) {
   const Viichan = req.query.Viichan;
-  const Viichan2 = Viichan.map((item) => {
-    return JSON.parse(item);
-  });
-
   let ViichanStr = "";
+  res.send(ViichanStr);
+});
 
-  Viichan2.forEach((item) => {
-    const keys = Object.keys(item);
-    const values = Object.values(item);
-    const maxStr = values[0] >= values[1] ? keys[0] : keys[1];
-    ViichanStr += maxStr;
-  });
+app.get("/result", function (req, res) {
+  console.log(DB);
 });
 
 app.listen(5000, function () {
