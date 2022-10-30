@@ -11,7 +11,13 @@ function Ending() {
     axios({
       method: "get",
       url: "http://localhost:5000/result",
-    });
+    })
+      .then((response) => {
+        const data = response.data;
+        set엔딩(data);
+      })
+      .catch(() => {})
+      .finally(() => {});
   };
 
   React.useEffect(() => {
@@ -39,6 +45,7 @@ function Ending() {
   return (
     <div className="result-img-wrap">
       <h1>당신이 선택한 운명은 바로</h1>
+      <h2>{`${엔딩.name}입니다.`}</h2>
       <img
         className="result-img"
         src={`${process.env.PUBLIC_URL}/${엔딩.content}`}

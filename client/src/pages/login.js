@@ -40,11 +40,12 @@ function Login() {
   };
 
   return (
-    <div className="App">
+    <div className="Login-main">
       <header className="App-header"></header>
       <input
-        className="inputtype"
+        className="Login-input"
         type="text"
+        placeholder="아이디를 입력해주세요"
         onChange={(event) => {
           const cloneUser = { ...user };
           cloneUser.id = event.target.value;
@@ -53,9 +54,10 @@ function Login() {
       />
       <br></br>
       <input
-        className="inputtype"
+        className="Login-input"
         style={{ marginTop: 10 }}
         type="password"
+        placeholder="비밀번호를 입력해주세요"
         onChange={(event) => {
           const cloneUser = { ...user };
           cloneUser.pw = event.target.value;
@@ -64,7 +66,7 @@ function Login() {
       />
       <br></br>
       <br />
-      <button className="btn" style={{ marginTop: 10 }} onClick={로그인}>
+      <button className="Login-btn" style={{ marginTop: 10 }} onClick={로그인}>
         로그인
       </button>
     </div>

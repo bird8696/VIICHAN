@@ -25,34 +25,32 @@ const DB = {
 const Ending = [
   {
     name: "얀데레엔딩",
-    content: "clientpublicimg얀데레 아이네.png",
+    content: "img/얀데레 아이네s.png",
     viichan: "C",
   },
   {
     name: "화목한 가족엔딩",
-    content: "img/고세구안경.gif",
+    content: "img/화목한가족.png",
     viichan: "D",
   },
   {
     name: "자상한 아버지엔딩",
-    content: "C:주말 htmlprojactclientpublicimg자상한아버지.jpg",
+    content: "img/자상한아버지.jpg",
     viichan: "E",
   },
   {
     name: "이혼엔딩",
-    content: "C:주말 htmlprojactclientpublicimg이혼.jpg",
+    content: "img/이혼.jpg",
     viichan: "A",
   },
   {
     name: "사망엔딩",
-    content:
-      "https://tenor.com/view/bed-time-go-to-sleep-you-die-card-flip-gif-16960032",
+    content: "img/사망.jpg",
     viichan: "B",
   },
   {
     name: "히든엔딩",
-    content:
-      "https://tenor.com/view/아이네-ine-アイネ-이세돌-이세계아이돌-gif-25551125",
+    content: "img/망상대가리.gif",
     viichan: "S",
   },
 ];

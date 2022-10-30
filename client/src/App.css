@@ -264,6 +264,32 @@ h3 {
   background-image: linear-gradient(135deg, #ff6f7d, #a7d3ff);
 }
 
-.inputtype {
+.Login-main {
   position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 35%;
+  left: 35%;
+}
+
+.Login-input {
+  width: 60%;
+  height: 60px;
+  padding: 10px;
+  margin-bottom: 30px;
+  font-size: 35px;
+}
+
+.Login-btn {
+  text-decoration: none;
+  font-style: normal;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  font-weight: 1000;
+  font-size: 45px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  width: 60%;
+  background-image: linear-gradient(135deg, #ff6f7d, #a7d3ff);
 }
