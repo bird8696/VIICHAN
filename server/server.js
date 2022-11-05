@@ -145,7 +145,7 @@ app.get("/result", function (req, res) {
   });
   let 추천엔딩 = Ending[maxkey];
 
-  if (DB.viichan.S === 3) {
+  if (DB.viichan.S === 4) {
     추천엔딩 = Ending[5];
   }
   console.log(추천엔딩);

@@ -69,6 +69,15 @@ function Login() {
       <button className="Login-btn" style={{ marginTop: 10 }} onClick={로그인}>
         로그인
       </button>
+      <button
+        className="Login-btn"
+        style={{ marginTop: 30 }}
+        onClick={() => {
+          navigation("/Join");
+        }}
+      >
+        회원가입
+      </button>
     </div>
   );
 }
