@@ -278,6 +278,7 @@ h3 {
   padding: 10px;
   margin-bottom: 30px;
   font-size: 35px;
+  border-radius: 10px;
 }
 
 .Login-btn {
@@ -298,7 +299,7 @@ h3 {
   position: absolute;
   width: 50%;
   height: 50%;
-  top: 25%;
+  top: 15%;
   left: 35%;
 }
 
@@ -316,4 +317,5 @@ h3 {
   padding: 10px;
   margin-bottom: 30px;
   font-size: 35px;
+  border-radius: 10px;
 }

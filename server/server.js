@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 
 const DB = {
@@ -101,8 +102,12 @@ app.get("/login", (req, res) => {
   }
 });
 
-app.post("./join", (req, res) => {
-  console.log(req.query);
+app.post("/join", function (req, res) {
+  console.log(req.body);
+  const id = req.body.id;
+  const pw = req.body.pw;
+  DB.user.push({ id, pw });
+  console.log(DB.user);
 });
 
 app.post("/Viichan", function (req, res) {

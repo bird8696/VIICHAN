@@ -21,11 +21,11 @@ function App() {
   const { pathname } = useLocation();
 
   const 주소유효성검증 = () => {
-    const 로그인했을때비접근주소 = ["Onc1"];
+    const 로그인했을때비접근주소 = ["Main", "Onc1"];
     const 주소 = pathname.slice(1);
 
     if (로그인했을때비접근주소.includes(주소) && loginUser.id !== "") {
-      navigation("/main");
+      navigation("/Main");
     }
   };
 
