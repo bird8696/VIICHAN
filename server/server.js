@@ -132,12 +132,8 @@ app.post("/join", function (req, res) {
       break;
     }
   }
-  if (pw === pw2) {
-    DB.user.push({ id, pw });
-    res.send(result);
-    console.log("적용됨");
-  }
-  console.log(DB.user);
+  DB.user.push({ id, pw });
+  res.send(result);
 });
 
 app.post("/Viichan", function (req, res) {

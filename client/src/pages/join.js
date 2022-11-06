@@ -21,7 +21,7 @@ function Join() {
         localStorage.setItem("joinUser", JSON.stringify(data.user));
         navigation("/login");
       } else {
-        alert("아이디 또는 비밀번호를 잘못 입력했습니다.");
+        alert("비밀번호를 잘못입력했습니다.");
         navigation("/join");
       }
     });
