@@ -103,10 +103,40 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/join", function (req, res) {
-  console.log(req.body);
+  const { user } = req.query;
   const id = req.body.id;
   const pw = req.body.pw;
-  DB.user.push({ id, pw });
+  const pw2 = req.body.pw2;
+  const 유효성배열검사 = [1];
+
+  const result = {
+    code: "success",
+    message: "회원가입이 되었습니다.",
+    user: null,
+  };
+
+  for (let key in 유효성배열검사) {
+    if (id === "") {
+      result.code = "fail";
+      result.message = "아이디를 입력해주세요";
+      break;
+    }
+    if (pw === "") {
+      result.code = "fail";
+      result.message = "비밀번호를 입력해주세요";
+      break;
+    }
+    if (pw !== pw2) {
+      result.code = "fail";
+      result.message = "비밀번호를 다시 입력해주세요";
+      break;
+    }
+  }
+  if (pw === pw2) {
+    DB.user.push({ id, pw });
+    res.send(result);
+    console.log("적용됨");
+  }
   console.log(DB.user);
 });
 

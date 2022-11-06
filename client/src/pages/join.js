@@ -4,7 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Join() {
-  const { setJoinUser } = React.useContext(StoreContext);
   const navigation = useNavigate();
 
   const [user, setUser] = React.useState({
@@ -17,7 +16,19 @@ function Join() {
       url: "http://localhost:5000/join",
       method: "post",
       data: user,
+    }).then(({ data }) => {
+      if (data.code === "success") {
+        localStorage.setItem("joinUser", JSON.stringify(data.user));
+        navigation("/login");
+      } else {
+        alert("아이디 또는 비밀번호를 잘못 입력했습니다.");
+        navigation("/join");
+      }
     });
+  };
+
+  const 회원가입 = async () => {
+    회원가입서버처리(user);
   };
 
   return (
@@ -53,10 +64,15 @@ function Join() {
         name="pswd2"
         maxLength={15}
         placeholder="비밀번호를 다시 입력하세요"
+        onChange={(event) => {
+          const cloneUser = { ...user };
+          cloneUser.pw2 = event.target.value;
+          setUser(cloneUser);
+        }}
       />
       <h3>비밀번호는 아이디는 중복될 수 없습니다.</h3>
       <button
-        onClick={회원가입서버처리}
+        onClick={회원가입}
         className="Login-btn"
         style={{ marginTop: 10 }}
       >
