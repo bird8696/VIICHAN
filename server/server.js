@@ -50,7 +50,7 @@ const Ending = [
     viichan: "B",
   },
   {
-    name: "히든엔딩",
+    name: "모든건 망상이었다 엔딩",
     content: "img/망상대가리.gif",
     viichan: "S",
   },
