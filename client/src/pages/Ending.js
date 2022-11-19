@@ -7,10 +7,10 @@ function Ending() {
   const navigation = useNavigate();
   const [엔딩, set엔딩] = React.useState({});
 
-  const 결과화면 = async() => {
+  const 결과화면 = async () => {
     await axios({
       method: "get",
-      url: "http://3.36.95.133:5000/Ending",
+      url: "http://3.36.95.133:5000/result",
     })
       .then((response) => {
         const data = response.data;
