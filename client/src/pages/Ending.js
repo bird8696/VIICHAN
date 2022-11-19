@@ -10,7 +10,7 @@ function Ending() {
   const 결과화면 = () => {
     axios({
       method: "get",
-      url: "http://localhost:5000/result",
+      url: "http://3.36.95.133:5000/result",
     })
       .then((response) => {
         const data = response.data;
