@@ -13,7 +13,7 @@ function Join() {
 
   const 회원가입서버처리 = async (paramsUser) => {
     await axios({
-      url: "http://localhost:5000/join",
+      url: "http://3.36.95.133:5000/join",
       method: "post",
       data: user,
     }).then(({ data }) => {

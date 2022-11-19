@@ -93,7 +93,7 @@ function App() {
         }
         await axios({
           method: "post",
-          url: "http://localhost:5000/Viichan",
+          url: "http://3.36.95.133:5000/Viichan",
           params: {
             Viichan: cloneViichan,
           },
