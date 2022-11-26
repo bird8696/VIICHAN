@@ -25,7 +25,7 @@ function App() {
     if (user) {
       setLoginUser(user);
     } else {
-      navigation("/Login");
+      navigation("/login");
     }
   };
 
