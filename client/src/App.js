@@ -106,8 +106,14 @@ function App() {
     }
   };
 
+  const 메인화면 = () => {
+    navigation("/Login");
+  };
+
   React.useEffect(() => {
     a();
+    메인화면();
+    console.log("로그인페이지로 이동");
   }, [dispatchType]);
 
   return (
