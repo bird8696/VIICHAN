@@ -72,6 +72,7 @@ app.get("/login", (req, res) => {
     message: "로그인되었습니다.",
     user: null,
   };
+
   //유효성 검증
   for (let key in 유효성배열) {
     if (id === "") {
@@ -104,9 +105,9 @@ app.get("/login", (req, res) => {
 
 app.post("/join", function (req, res) {
   const { user } = req.query;
-  const id = req.body.id;
-  const pw = req.body.pw;
-  const pw2 = req.body.pw2;
+  const id = user.id;
+  const pw = user.pw;
+  const pw2 = user.pw2;
   const 유효성배열검사 = [1];
 
   const result = {
@@ -121,19 +122,22 @@ app.post("/join", function (req, res) {
       result.message = "아이디를 입력해주세요";
       break;
     }
+
     if (pw === "") {
       result.code = "fail";
       result.message = "비밀번호를 입력해주세요";
       break;
     }
+
     if (pw !== pw2) {
       result.code = "fail";
       result.message = "비밀번호를 다시 입력해주세요";
       break;
     }
-    if (id === pw) {
+
+    if (id === user.id) {
       result.code = "fail";
-      result.message = "아이디와 비밀번호는 같을 수 없습니다.";
+      result.message = "기존 아이디와 동일합니다.";
       break;
     }
   }
