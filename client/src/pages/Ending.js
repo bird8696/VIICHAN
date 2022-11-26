@@ -55,7 +55,7 @@ function Ending() {
         className="btn"
         type="button"
         onClick={() => {
-          navigation("/login");
+          navigation("/Main");
         }}
       >
         다시하기
