@@ -9,7 +9,7 @@ const DB = {
   user: [
     {
       id: "a",
-      pw: "a",
+      pw: "b",
     },
   ],
 
@@ -129,6 +129,11 @@ app.post("/join", function (req, res) {
     if (pw !== pw2) {
       result.code = "fail";
       result.message = "비밀번호를 다시 입력해주세요";
+      break;
+    }
+    if (id === pw) {
+      result.code = "fail";
+      result.message = "아이디와 비밀번호는 같을 수 없습니다.";
       break;
     }
   }

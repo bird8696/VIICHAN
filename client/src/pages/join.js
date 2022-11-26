@@ -70,7 +70,7 @@ function Join() {
           setUser(cloneUser);
         }}
       />
-      <h3>비밀번호는 아이디는 중복될 수 없습니다.</h3>
+      <h3>아이디와 비밀번호는 중복될 수 없습니다.</h3>
       <button
         onClick={회원가입}
         className="Login-btn"
