@@ -25,8 +25,7 @@ function App() {
     if (user) {
       setLoginUser(user);
     } else {
-      alert(">");
-      //navigation("/Login");
+      navigation("/Login");
     }
   };
 

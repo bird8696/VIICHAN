@@ -9,7 +9,7 @@ const DB = {
   user: [
     {
       id: "a",
-      pw: "b",
+      pw: "a",
     },
   ],
 
