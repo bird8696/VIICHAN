@@ -104,10 +104,8 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/join", function (req, res) {
-  const { user } = req.query;
-  const id = user.id;
-  const pw = user.pw;
-  const pw2 = user.pw2;
+  const { id, pw, pw2 } = req.body;
+
   const 유효성배열검사 = [1];
 
   const result = {
@@ -135,9 +133,13 @@ app.post("/join", function (req, res) {
       break;
     }
 
-    if (id === user.id) {
+    const findUser = DB.user.findIndex((item) => {
+      return item.id === id;
+    });
+
+    if (findUser >= 0) {
       result.code = "fail";
-      result.message = "기존 아이디와 동일합니다.";
+      result.message = "중복 아이디 존재";
       break;
     }
   }

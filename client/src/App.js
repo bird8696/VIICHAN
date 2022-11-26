@@ -18,36 +18,21 @@ function App() {
     pw: "",
   });
 
-  const 메인화면 = () => {
-    navigation("/Login");
-  };
-
   const { pathname } = useLocation();
-
-  const 주소유효성검증 = () => {
-    const 로그인했을때비접근주소 = ["Main", "Onc1"];
-    const 주소 = pathname.slice(1);
-
-    if (로그인했을때비접근주소.includes(주소) && loginUser.id !== "") {
-      navigation("/Main");
-    }
-  };
-
   const 자동로그인 = () => {
     const user = JSON.parse(localStorage.getItem("loginUser"));
 
     if (user) {
       setLoginUser(user);
+    } else {
+      alert(">");
+      //navigation("/Login");
     }
   };
 
   React.useEffect(() => {
     자동로그인();
   }, []);
-
-  React.useEffect(() => {
-    주소유효성검증();
-  }, [loginUser]);
 
   const navigation = useNavigate();
   const [dispatchType, setDispatechType] = React.useState({
@@ -109,11 +94,6 @@ function App() {
         break;
     }
   };
-
-  React.useEffect(() => {
-    메인화면();
-    console.log("실행");
-  }, []);
 
   React.useEffect(() => {
     a();
