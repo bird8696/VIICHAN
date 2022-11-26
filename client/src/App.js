@@ -18,6 +18,10 @@ function App() {
     pw: "",
   });
 
+  const 메인화면 = () => {
+    navigation("/Login");
+  };
+
   const { pathname } = useLocation();
 
   const 주소유효성검증 = () => {
@@ -106,13 +110,13 @@ function App() {
     }
   };
 
-  const 메인화면 = () => {
-    navigation("/Login");
-  };
+  React.useEffect(() => {
+    메인화면();
+    console.log("실행");
+  }, []);
 
   React.useEffect(() => {
     a();
-    console.log("로그인페이지로 이동");
   }, [dispatchType]);
 
   return (
