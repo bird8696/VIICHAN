@@ -1,0 +1,33 @@
+[
+    {
+      "name": "얀데레엔딩",
+      "content": "img/얀데레 아이네s.png",
+      "viichan": "C"
+    },
+    {
+      "name": "화목한 가족엔딩",
+      "content": "img/화목한가족.png",
+      "viichan": "D"
+    },
+    {
+        "name": "자상한 아버지엔딩",
+        "conten": "img/자상한아버지.jpg",
+        "viichan": "E"
+    },
+    {
+        "name": "이혼엔딩",
+        "content": "img/이혼.jpg",
+        "viichan": "A"
+    },
+    {
+        "name": "사망엔딩",
+        "content": "img/사망.jpg",
+        "viichan": "B"
+    },
+    {
+        "name": "모든건 망상이었다 엔딩",
+        "content": "img/망상대가리.gif",
+        "viichan": "S"
+    }
+  ]
+  

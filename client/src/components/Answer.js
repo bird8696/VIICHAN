@@ -1,24 +1,15 @@
-import React from "react";
-import { SetContext } from "../App";
+import React, { useContext } from "react";
+import { StoreContext } from "../App";
+import { useNavigate } from "react-router-dom";
 
-function Answer(props) {
-  const { setDispatechType } = React.useContext(SetContext);
+function Answer({ text, value, nextPage }) {
+  const { updateScore } = useContext(StoreContext);
+  const navigate = useNavigate();
+
   return (
-    <button
-      className="Answer"
-      onClick={() => {
-        setDispatechType({  
-          code: "답변",
-          params: {
-            viichan: props.value,
-          },
-        });
-      }}
-    >
-      {props.text}
+    <button className="answer-btn" onClick={() => updateScore(value, navigate, nextPage)}>
+      {text}
     </button>
-
-    
   );
 }
 

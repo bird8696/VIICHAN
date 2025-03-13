@@ -1,26 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../App";
 
 function Main() {
   const { loginUser, setLoginUser } = React.useContext(StoreContext);
-
   const navigation = useNavigate();
 
-  console.log(loginUser);
+  // 로그인 상태 유지 및 비로그인 유저 처리
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("loginUser"));
+    if (!storedUser) {
+      alert("로그인이 필요합니다.");
+      navigation("/login");
+    } else {
+      setLoginUser(storedUser);
+    }
+  }, [setLoginUser, navigation]);
+
   return (
-    // 이미지 출처: https://tenor.com/view/아이네-ine-アイネ-이세돌-이세계아이돌-gif-25436629
     <div className="main-app">
       <h3>안녕하세요 {loginUser.id}님! </h3>
       <button
         className="idbutn"
         onClick={() => {
-          localStorage.removeItem("loginUser");
+          localStorage.removeItem("loginUser"); // 로그인 정보 삭제
           setLoginUser({
             id: "",
             pw: "",
           });
-          navigation("/Login");
+          navigation("/Login"); // 로그인 페이지로 이동
         }}
       >
         로그아웃

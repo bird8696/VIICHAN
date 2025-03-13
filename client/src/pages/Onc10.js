@@ -1,7 +1,11 @@
 import React from "react";
 import { ProgressBar, Question, Answer } from "../components";
+import { StoreContext } from "../App";
 
 function Onc10(props) {
+
+  const { updateScore } = useContext(StoreContext);
+
   return (
     // 이미지 출처: https://tenor.com/view/고세구-gosegu-ゴセグ-이세돌-이세계아이돌-gif-23555150
     <div className="main-app">
@@ -19,10 +23,10 @@ function Onc10(props) {
       </h2>
       <h2 className="top-text">당신은 어떻게 하시겠습니까?</h2>
 
-      <Answer text="잘한다 잘한다 우리 새끼" value="D" />
-      <Answer text="우리 세구땅 나중에 아이돌 해도 되겠다" value="E" />
-      <Answer text="어린이집을 이상한 춤을  가르친 죄로 고소한다." value="A" />
-      <Answer text="영상을 찍어 인스타 올린다." value="E" />
+      <Answer text="잘한다 잘한다 우리 새끼" value="D" nextPage={11} />
+      <Answer text="우리 세구땅 나중에 아이돌 해도 되겠다" value="E" nextPage={11} />
+      <Answer text="어린이집을 이상한 춤을  가르친 죄로 고소한다." value="A" nextPage={11} />
+      <Answer text="영상을 찍어 인스타 올린다." value="E" nextPage={11} />
     </div>
   );
 }

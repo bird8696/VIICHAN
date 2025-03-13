@@ -1,6 +1,5 @@
 import React from "react";
 import { StoreContext } from "../App";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -12,31 +11,23 @@ function Login() {
     pw: "",
   });
 
-  const 로그인서버처리 = async (paramsUser) => {
-    await axios({
-      url: "http://3.36.95.133:5000/login",
-      params: {
-        user: user,
-      },
-    }).then(({ data }) => {
-      if (data.code === "success") {
-        setLoginUser(data.user);
-        /*
-        웹 저장소
-        1. localStorage (만료 없음 영구적임)
-        2. Cookie (만료날짜가 있음)
-        */
-        localStorage.setItem("loginUser", JSON.stringify(data.user));
-        navigation("/Main");
-      } else {
-        alert("아이디 또는 비밀번호를 잘못입력하셨습니다");
-        navigation("/login");
-      }
-    });
-  };
+  // 로그인 처리 (LocalStorage 사용)
+  const 로그인 = () => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-  const 로그인 = async () => {
-    로그인서버처리(user);
+    // 입력한 ID와 PW가 일치하는지 확인
+    const foundUser = users.find((u) => u.id === user.id && u.pw === user.pw);
+
+    if (foundUser) {
+      setLoginUser(foundUser);
+      localStorage.setItem("loginUser", JSON.stringify(foundUser));
+
+      alert("로그인 성공!");
+      navigation("/Main");
+    } else {
+      alert("아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+      navigation("/login");
+    }
   };
 
   return (
@@ -47,24 +38,20 @@ function Login() {
         type="text"
         placeholder="아이디를 입력해주세요"
         onChange={(event) => {
-          const cloneUser = { ...user };
-          cloneUser.id = event.target.value;
-          setUser(cloneUser);
+          setUser((prev) => ({ ...prev, id: event.target.value }));
         }}
       />
-      <br></br>
+      <br />
       <input
         className="Login-input"
         style={{ marginTop: 10 }}
         type="password"
         placeholder="비밀번호를 입력해주세요"
         onChange={(event) => {
-          const cloneUser = { ...user };
-          cloneUser.pw = event.target.value;
-          setUser(cloneUser);
+          setUser((prev) => ({ ...prev, pw: event.target.value }));
         }}
       />
-      <br></br>
+      <br />
       <br />
       <button className="Login-btn" style={{ marginTop: 10 }} onClick={로그인}>
         로그인

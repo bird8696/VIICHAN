@@ -1,7 +1,11 @@
 import React from "react";
 import { ProgressBar, Question, Answer } from "../components";
+import { StoreContext } from "../App";
 
 function Onc5(props) {
+
+  const { updateScore } = useContext(StoreContext);
+
   return (
     // 이미지 출처: https://tenor.com/view/%EC%95%84%EC%9D%B4%EB%84%A4-ine-%E3%82%A2%E3%82%A4%E3%83%8D-%EC%9D%B4%EC%84%B8%EB%8F%8C-%EC%9D%B4%EC%84%B8%EA%B3%84%EC%95%84%EC%9D%B4%EB%8F%8C-gif-25738374
     <div className="main-app">
@@ -13,10 +17,10 @@ function Onc5(props) {
       </h2>
       <h2 className="top-text">당신은 어떻게 하시겠습니까?</h2>
 
-      <Answer text="딱밤을 통해 정신을 차리게 해준다" value="D" />
-      <Answer text="조용히 옆으로 다가가 어깨를 빌려준다" value="E" />
-      <Answer text="공주님 안기를 통해 무사히 집까지 간다." value="C" />
-      <Answer text="사진을 찍어서 인스타에 올린다." value="D" />
+      <Answer text="딱밤을 통해 정신을 차리게 해준다" value="D" nextPage={6} />
+      <Answer text="조용히 옆으로 다가가 어깨를 빌려준다" value="E" nextPage={6} />
+      <Answer text="공주님 안기를 통해 무사히 집까지 간다." value="C" nextPage={6}  />
+      <Answer text="사진을 찍어서 인스타에 올린다." value="D" nextPage={6} />
     </div>
   );
 }

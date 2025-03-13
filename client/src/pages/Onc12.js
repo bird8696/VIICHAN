@@ -1,7 +1,11 @@
 import React from "react";
 import { ProgressBar, Question, Answer } from "../components";
+import { StoreContext } from "../App";
 
 function Onc12(props) {
+
+  const { updateScore } = useContext(StoreContext);
+
   return (
     // 이미지 출처: https://tenor.com/view/고세구-gif-23911089
     <div className="main-app">
@@ -16,10 +20,10 @@ function Onc12(props) {
       </h2>
       <h2 className="top-text">당신은 어떻게 하시겠습니까?</h2>
 
-      <Answer text="정확한 지식을 가르쳐줘야한다." value="D" />
-      <Answer text="고양이를 볼때마다 멍멍하며 세구땅을 놀린다" value="C" />
-      <Answer text="배운 것도 기억 못하냐고 화낸다." value="A" />
-      <Answer text="전자 동화책을 사서 직접 눌러주며 가르쳐준다." value="S" />
+      <Answer text="정확한 지식을 가르쳐줘야한다." value="D" nextPage={13} />
+      <Answer text="고양이를 볼때마다 멍멍하며 세구땅을 놀린다" value="C" nextPage={13} />
+      <Answer text="배운 것도 기억 못하냐고 화낸다." value="A" nextPage={13} />
+      <Answer text="전자 동화책을 사서 직접 눌러주며 가르쳐준다." value="S" nextPage={13} />
     </div>
   );
 }

@@ -1,7 +1,11 @@
 import React from "react";
 import { ProgressBar, Question, Answer } from "../components";
+import { StoreContext } from "../App";
 
 function Onc7(props) {
+
+  const { updateScore } = useContext(StoreContext);
+
   return (
     // 이미지 출처: https://tenor.com/view/isegye-idol-jururu-주르르-ジュルル-잠옷-gif-25184687
     <div className="main-app">
@@ -18,10 +22,10 @@ function Onc7(props) {
       </h2>
       <h2 className="top-text">당신은 어떻게 하시겠습니까?</h2>
 
-      <Answer text="가위바위보 딱밤 맞기" value="B" />
-      <Answer text="날아라 비행기" value="A" />
-      <Answer text="알아서 놀으라고 하고 휴대폰을 한다" value="A" />
-      <Answer text="무엇을 하고 놀고 싶은지 르르땅에게 물어본다" value="E" />
+      <Answer text="가위바위보 딱밤 맞기" value="B" nextPage={8} />
+      <Answer text="날아라 비행기" value="A" nextPage={8} />
+      <Answer text="알아서 놀으라고 하고 휴대폰을 한다" value="A" nextPage={8} />
+      <Answer text="무엇을 하고 놀고 싶은지 르르땅에게 물어본다" value="E" nextPage={8} />
     </div>
   );
 }

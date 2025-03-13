@@ -1,35 +1,44 @@
 import React, { useState } from "react";
-import { StoreContext } from "../App";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Join() {
   const navigation = useNavigate();
 
-  const [user, setUser] = React.useState({
+  const [user, setUser] = useState({
     id: "",
     pw: "",
+    pw2: "",
   });
 
-  const 회원가입서버처리 = async (paramsUser) => {
-    await axios({
-      url: "http://3.36.95.133:5000/join",
-      //   url: "http://127.0.0.1:5000/join",
-      method: "post",
-      data: user,
-    }).then(({ data }) => {
-      if (data.code === "success") {
-        localStorage.setItem("joinUser", JSON.stringify(data.user));
-        navigation("/login");
-      } else {
-        alert(data.message);
-        navigation("/join");
-      }
-    });
-  };
+  // 회원가입 처리 (LocalStorage 사용)
+  const 회원가입 = () => {
+    if (user.id === "" || user.pw === "" || user.pw2 === "") {
+      alert("모든 필드를 입력해주세요.");
+      return;
+    }
 
-  const 회원가입 = async () => {
-    회원가입서버처리(user);
+    if (user.pw !== user.pw2) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    // 중복 아이디 검사
+    const isUserExists = existingUsers.some((u) => u.id === user.id);
+    if (isUserExists) {
+      alert("이미 존재하는 아이디입니다.");
+      return;
+    }
+
+    const newUser = { id: user.id, pw: user.pw };
+    existingUsers.push(newUser);
+
+    // LocalStorage에 저장
+    localStorage.setItem("users", JSON.stringify(existingUsers));
+
+    alert("회원가입 성공! 로그인 페이지로 이동합니다.");
+    navigation("/login");
   };
 
   return (
@@ -42,9 +51,7 @@ function Join() {
         maxLength={15}
         placeholder="아이디를 입력하세요"
         onChange={(event) => {
-          const cloneUser = { ...user };
-          cloneUser.id = event.target.value;
-          setUser(cloneUser);
+          setUser((prev) => ({ ...prev, id: event.target.value }));
         }}
       />
       <input
@@ -54,9 +61,7 @@ function Join() {
         maxLength={15}
         placeholder="비밀번호를 입력하세요"
         onChange={(event) => {
-          const cloneUser = { ...user };
-          cloneUser.pw = event.target.value;
-          setUser(cloneUser);
+          setUser((prev) => ({ ...prev, pw: event.target.value }));
         }}
       />
       <input
@@ -66,9 +71,7 @@ function Join() {
         maxLength={15}
         placeholder="비밀번호를 다시 입력하세요"
         onChange={(event) => {
-          const cloneUser = { ...user };
-          cloneUser.pw2 = event.target.value;
-          setUser(cloneUser);
+          setUser((prev) => ({ ...prev, pw2: event.target.value }));
         }}
       />
       <br />

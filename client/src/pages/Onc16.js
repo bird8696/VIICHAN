@@ -1,7 +1,11 @@
 import React from "react";
 import { ProgressBar, Question, Answer } from "../components";
+import { StoreContext } from "../App";
 
 function Onc16(props) {
+
+  const { updateScore } = useContext(StoreContext);
+
   return (
     // 이미지 출처: https://tenor.com/view/릴파-lilpa-リルパ-이세돌-이세계아이돌-gif-25738694
     <div className="main-app">
@@ -15,10 +19,10 @@ function Onc16(props) {
       </h2>
       <h2 className="top-text">당신은 어떻게 답하겠습니까?</h2>
 
-      <Answer text="푸킵푸킵" value="A" />
-      <Answer text="ㄱㅇㅇ" value="C" />
-      <Answer text="어떻게 아이돌이 전투메이드 ㅋㅋ" value="A" />
-      <Answer text="흑역사 조차 팬서비스로 대단하다 릴파" value="D" />
+      <Answer text="푸킵푸킵" value="A" nextPage={17} />
+      <Answer text="ㄱㅇㅇ" value="C" nextPage={17} />
+      <Answer text="어떻게 아이돌이 전투메이드 ㅋㅋ" value="A" nextPage={17} />
+      <Answer text="흑역사 조차 팬서비스로 대단하다 릴파" value="D" nextPage={17} />
     </div>
   );
 }

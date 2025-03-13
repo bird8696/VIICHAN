@@ -1,7 +1,11 @@
 import React from "react";
 import { ProgressBar, Question, Answer } from "../components";
+import { StoreContext } from "../App";
 
 function Onc9(props) {
+
+  const { updateScore } = useContext(StoreContext);
+
   return (
     // 이미지 출처: https://tenor.com/view/jururu-주르르-ジュルル-220323-vrchat-gif-25184783
     <div className="main-app">
@@ -16,15 +20,17 @@ function Onc9(props) {
       </h2>
       <h2 className="top-text">당신은 어떻게 하시겠습니까?</h2>
 
-      <Answer text="우리 르르가 세상에서 제일 이쁘지" value="E" />
+      <Answer text="우리 르르가 세상에서 제일 이쁘지" value="E" nextPage={10} />
       <Answer
         text="뢴트가 누구야? 아빠 몰래 남자친구 사귀면 안되요"
         value="C"
+        nextPage={10}
       />
-      <Answer text="뢴트가 뭐지 뢴트겨늄?" value="S" />
+      <Answer text="뢴트가 뭐지 뢴트겨늄?" value="S" nextPage={10} />
       <Answer
         text="아빠가 주폭도 인형 사줄게 기분 풀자 착하지 르르땅"
         value="D"
+        nextPage={10}
       />
     </div>
   );
